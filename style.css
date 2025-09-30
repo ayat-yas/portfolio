@@ -1,0 +1,89 @@
+/* Palette violette */
+:root {
+  --violet-clair: #d6c4f0;
+  --violet-moyen: #a18bd0;
+  --violet-foncé: #6c4ab6;
+  --blanc: #ffffff;
+  --gris-clair: #f5f5f5;
+  --texte: #333;
+}
+
+/* Style global */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--gris-clair);
+  color: var(--texte);
+  transition: background-color 0.3s ease;
+}
+
+/* En-tête */
+header {
+  background: linear-gradient(135deg, var(--violet-foncé), var(--violet-moyen));
+  color: var(--blanc);
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Navigation */
+nav {
+  background-color: var(--violet-moyen);
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+  color: var(--blanc);
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--violet-clair);
+}
+
+/* Section principale */
+main {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: var(--blanc);
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  animation: fadeInUp 1s ease;
+}
+
+/* Titres */
+h1, h2 {
+  color: var(--violet-foncé);
+}
+
+/* Liens */
+a {
+  color: var(--violet-foncé);
+}
+
+/* Pied de page */
+footer {
+  background-color: var(--violet-moyen);
+  color: var(--blanc);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
