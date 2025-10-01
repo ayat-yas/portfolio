@@ -1,54 +1,743 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio - Ayat Chenine</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio ACHENINE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#800020',
+                            dark: '#a83244'
+                        },
+                        secondary: {
+                            light: '#e85c70',
+                            dark: '#8b2c3a'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html{
+            transition: background-color 0.5s ease, color 0.5s ease;
+            }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .light .gradient-text {
+            background-image: linear-gradient(45deg, #800020, #e85c70);
+        }
+        .dark .gradient-text {
+            background-image: linear-gradient(90deg, #800020, #a83244, #e85c70);
+            background-size:200% 200%;
+            animation: gradientMove 6s ease infinite;
+            -webkit-background-clip: text;
+            color:transparent;
+        }
+        @keyframes gradientMove{
+            0% { background-position: 0% 50% ; }
+            50% { background-position: 100% 50% ; }
+            100% { background-position: 0% 50% ; }
+        }
+        .project-card {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            padding: 20px;
+            background: rgba(255 ,255 , 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 20px rgba(128, 0, 32,0.25);
+            border-radius: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-12px)scale(1.03);
+            box-shadow: 0 12px 30px rgba(168, 50, 68, 0.45);
+            border: 1px solid rgba(232, 92, 112, 0.3);
+        }
+        .theme-toggle {
+            transition: all 0.5s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(180deg)scale(1.1);
+            color: #e85c70;
+            text-shadow: 0 0 10px #e85c70;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter:blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+         }
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 8px 15px;
+            transition: color 0.3s ease;
+         }
+        .nav-link:hover{
+            color: #e85c70;
+            text-shadow: 0 0 10px rgba(232, 92, 112, 0.9);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(90deg, #800020, #e85c70);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }    
+        .btn {
+            background: linear-gradient(90deg, #800020, #a83244);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(128,0,32,0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(90deg, #a83244, #e85c70);
+            box-shadow: 0 8px 25px rgba(232,92,112,0.6);
+        }
+        body{
+            font-family: 'Roboto Mono' , monospace;
+            background: linear-gradient(-45deg, #800020, #a83244, #e85c70, #2d0b17);
+            background-size: 400% 400%;
+            animation: gradientBackground 9s linear Infinite;
+            color:#fff;
+        }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }  
+        .skill-icon {
+            transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease ;
+        } 
+        .skill-icon:hover {
+        transform: rotate(12deg) scale(1.2);
+        color:#e85c70;
+        text-shadow: 0 0 15px rgba(232, 92, 112, 0.8);
+        }  
+        /* Apparition en fondu */
+        @keyframes fadeInUp {
+          0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+          100% {
+           opacity: 1;
+         transform: translateY(0);
+         }
+        }
+
+        /* Apparition avec zoom */
+        @keyframes zoomIn {
+        0% {
+        opacity: 0;
+        transform: scale(0.8);
+        }
+        100% {
+        opacity: 1;
+        transform: scale(1);
+        } 
+        }
+
+        /* Apparition avec slide depuis la gauche */
+        @keyframes slideInLeft {
+         0% {
+         opacity: 0;
+           transform: translateX(-50px);
+         }
+         100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        }
+
+        /* Classes utilitaires */
+        .animate-fade {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        }
+        .animate-zoom {
+        opacity: 0;
+        animation: zoomIn 0.8s ease forwards;
+        }
+        .animate-left {
+        opacity: 0;
+         animation: slideInLeft 1s ease forwards;
+        }
+        .img-hover-zoom {
+            transition: transform 0.5s ease;
+        }
+        .img-hover-zoom:hover {
+            transform: scale(1.2);
+        }
+   
+        
+    </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-[#1a0b0d] via-[#2d0b17] to-[#800020] text-gray-100 transition-colors duration-500">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white/10 dark:bg-black/20 backdrop-blur-xl shadow-lg border-b border-white/10">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <!--logo--> 
+                <a href="#" class="text-3xl font-extrabold gradient-text tracking-wide">Portfolio Ayat Chenine</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link">Acceuil</a>
+                    <a href="#about" class="nav-link">A propos</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Compétances</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#800020] to-[#e85c70] shadow-md hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-moon text-gray-700 text-lg dark:hidden"></i>
+                        <i class="fas fa-sun text-white text-lg hidden dark:block"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-3 rounded-full bg-gradient-to-r from-[#a83244] to -[#e85c70] shadow-md hover:scale-110 transition-all duration-500">
+                        <i class="fas fa-bars text-white text-lg"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- menu télephone -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link">Acceuil</a>
+                <a href="#about" class="nav-link">A propos</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Compétence</a>
+                <a href="#contact" class="nav-link">Contacte</a>
+            </div>
+        </div>
+    </header>
 
-  <header>
-    <h1>Ayat Chenine</h1>
-    <p>Étudiante en BTS SIO option SLAM</p>
-  </header>
-
-  <nav>
-    <a href="#cv">CV</a>
-    <a href="#projets">Projets</a>
-    <a href="#competences">Compétences</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <main>
-    <section id="cv">
-      <h2>Mon CV</h2>
-      <p>Découvrez mon parcours académique et professionnel, ainsi que mes expériences en alternance.</p>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <!--texte-->
+            <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in ">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade">Ayat<span class="gradient-text">Chenine</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-medium text-white mb-6">Etudiante en BTS SIO SLAM </h2>
+                    <p class="text-lg mb-8 text-gray-300 dark:text-gray-400 max-w-md mb-8 leading-relaxed">
+                        passionnée par le développement web et le design,j'ailie créativité et technique pour concevoir des sites modernes et efficaces.
+                    </p>
+                    <!--boutons-->
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#800020] to-[#a83244] shadow-lg shadow-[#800020]/40 hover:scale-105 hover:shadow-[#a83244]/60 transition-all duration-300">
+                            Voir mes projets
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-lg font-semibold border border-[#a83244] text-[#a83244] bg-white/5 backdrop-blur-md hover:bg-[#a83244]/10 hover:text-white transition-all duration-300">
+                            Me contacter
+                        </a>
+                    </div>
+                </div>
+                <!-- image de profil-->
+                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-slide-up">
+                        <img src="assets/img/ayat.jpg" 
+                             alt="Ayat chenine"  
+                             class=" animate-left rounded-full w-96 h-96 object-cover border-4 border-[#800020] shadow-xl shadow-black/40 hover:scale-105 transition-transform duration-500 animate-float
+                             ">
+                
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="projets">
-      <h2>Mes projets</h2>
-      <ul>
-        <li>Calculatrice en Java</li>
-        <li>Site e-commerce avec Shopify</li>
-        <li>Back-office Bacchus Services</li>
-        <li>Jeu de bulles en JavaScript</li>
-      </ul>
+    <!-- About Section -->
+    <section id="about" class="relative py-20 bg-gradient-to-b from-[#1a0b0d]  via-[#2d0b17] to-[#800020] text-gray-100">      
+      <div class="container mx-auto px-6">
+            <!--titre-->
+            <h2 class="text-6xl font-extrabold mb-16 text-center tracking-wide">A <span class="gradient-text">Propos</span></h2>
+            
+            <div class="flex flex-col md:flex-row items-center md:space-x-12">
+                <!--images-->
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative w-64 h-94 rounded-full overflow-hidden shadow-2x1 border-4 border-[#800020] animate-float">
+                        <img src="assets/img/apropos.jpg" 
+                             alt="A propos"
+                             class="w-full h-full object-cover">
+                             <div class="absolute inset-0 rounded-full border-[#800020] blur-lg opacity-40"></div>
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-6 text-center md:text-left">
+                    <h3 class="text-2xl font-semibold mb-4">Qui suis-je?</h3>
+                    <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                        Je suis Ayat Chenine, étudiante Algérienne en <span class="text-[#a83244]">BTS SIO option SLAM </span> passionnée par le développement web et le design,j'aime allier créativité et technique pour concevoir des sites et applications modernes,a la fois esthétiques et fonctionnels alliant créativité et performance.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 rounded-xl shadow-lg bg-gradient-to-br from-[#1a0b0d] to-[#2d0b17] border border-[#800020]/40">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-[#800020]/30 text-[#e85c70] mr-4 shadow-inner">
+                                    <i class="fas fa-graduation-cap text-2xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-xl text-white">Education</h4>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed">
+                                L1 informatique<br>
+                                -Université sorbonne paris nord<br>
+                                BTS SIO option SLAM (en cours)<br>
+                                -école IRIS <br>
+                            </p>
+                        </div>
+                        
+                        <div class="p-6 rounded-xl shadow-lg bg-gradient-to-br from-[#1a0b0d] to-[#2d0b17] border border-[#a83244]/4O">
+                            <div class="flex items-center mb-4">
+                                <div class="p-3 rounded-full bg-[#a83244]/30 text-[#e85c70] mr-4 shadow-inner">
+                                    <i class="fas fa-code text-2xl"></i>
+                                </div>
+                                <h4 class="font-semibold text-xl text-white">Expériences</h4>
+                            </div>
+                            <p class="text-gray-300 leading-relaxed"> 
+                                Alternance en premiere année-poste technicien informatique <br>
+                                Chez DBC 17 <br>
+                                Seconde année en cours<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="competences">
-      <h2>Compétences</h2>
-      <p>HTML, CSS, PHP, JavaScript, Python, MySQL, GitHub, UML, XAMPP...</p>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold mb-12 text-center ">Mes <span class="gradient-text">Projets</span></h2>
+            <!--Grille-->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden ">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A full-featured online store with cart functionality, user authentication, and payment processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Project 2" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Firebase</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">TailwindCSS</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                             alt="Project 3" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Weather Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            Real-time weather application with 5-day forecasts, location search, and interactive maps.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">API Integration</span>
+                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CSS3</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
+                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Tu peux me joindre via <a href="https://www.linkedin.com">LinkedIn</a> ou par email.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="animate-left py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">My <span class="gradient-text">Skills</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-react text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2 ">React</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full"style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-js text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">JavaScript</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-vuejs text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Vue.js</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
+                        <i class="fab fa-css3-alt text-3xl text-primary-light dark:text-primary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">CSS/Tailwind</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 92%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-node-js text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Node.js</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-database text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">MongoDB</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 7 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fab fa-git-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Git</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 8 -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
+                        <i class="fas fa-mobile-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                    </div>
+                    <h3 class="font-semibold mb-2">Responsive Design</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
+                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 Ayat Chenine - Portfolio BTS SIO SLAM</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Contact <span class="gradient-text">Moi</span></h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="mb-8 text-gray-400 dark:text-gray-300">
+                        Feel free to reach out to me for project inquiries, collaborations, or just to say hello. 
+                        I'll get back to you as soon as possible.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-envelope text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-400 dark:text-gray-300">Ayat.chenin@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-400 dark:text-gray-300">0766387381</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
+                                <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-gray-400 dark:text-gray-300">Paris 16</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Suivez-moi</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-gray-500 dark:bg-gray-700 p-8 rounded-lg shadow-sm">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 font-medium">Nom</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 font-medium">Sujet</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
+                            Envoie Un Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio de Ayat Chenine</a>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">© 2023 All Rights Reserved</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="nav-link">Acceuil</a>
+                    <a href="#about" class="nav-link">A propos</a>
+                    <a href="#projects" class="nav-link">Projets</a>
+                    <a href="#contact" class="nav-link">Contacte</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use system preference
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        html.classList.add(savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation classes when elements come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+        });
+        
+        document.querySelectorAll('.animate-slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.animation = 'slideUp 0.5s ease-out forwards';
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on page load
+        window.addEventListener('load', animateOnScroll);
+    </script>
 </body>
 </html>
