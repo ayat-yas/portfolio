@@ -39,6 +39,18 @@
                 }
             }
         }
+    const text = "Etudiante en BTS SIO SLAM";
+     let index = 0;
+
+      function typeWriter() {
+      if (index < text.length) {
+         document.getElementById("typed-text").innerHTML += text.charAt(index);
+         index++;
+         setTimeout(typeWriter, 80); // vitesse    d’écriture (ms)
+    }
+  }
+
+  window.onload = typeWriter;
     </script>
     <style>
         html{
@@ -141,11 +153,47 @@
         }
         body{
             font-family: 'Roboto Mono' , monospace;
-            background: linear-gradient(-45deg, #800020, #a83244, #e85c70, #2d0b17);
-            background-size: 400% 400%;
-            animation: gradientBackground 9s linear Infinite;
-            color:#fff;
+            background: #ffffff;
+            color:#111;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative;
+            overflow-x: hidden;
         }
+        .dark body {
+            background: #121212;
+            color: #f5f5f5;
+        }
+        body::before{
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(128,0,32,0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 12s ease-in-out infinite alternate;
+            }
+
+        body::after {
+            content: "";
+            position: absolute;
+            background: radial-gradient(circle, rgba(168,50,68,0.25) 0%,transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float2 18s ease-in-out infinite alternate;
+            opacity: 0.35;
+          }
+        @keyframes float {
+          0%   { transform: translate(0,0) scale(1); }
+          100% { transform: translate(120px,80px) scale(1.2); }
+        }       
+        @keyframes float2 {
+              0%   { transform: translate(0,0) scale(1); }
+              100% { transform: translate(-100px,-70px) scale(1.15); }
+        }
+
         @keyframes gradientBackground {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -225,7 +273,47 @@
         .img-hover-zoom:hover {
             transform: scale(1.2);
         }
-   
+        .tracking-in-expand-fwd{
+            animation:tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.61, 0.355, 1.000) both;
+        }
+        @keyframes tracking-in-expand-fwd{
+        0%{
+            letter-spacing:-0.5em;
+            transform:translateZ(-700px);
+            opacity:0;
+         }
+        40%{
+            opacity:0.6;
+        }
+        100%{
+            transform:translateZ(0);
+            opacity:1;
+        }
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+         50% { border-color: transparent }
+        }
+        .typewriter {
+         overflow: hidden;
+          white-space: nowrap;
+          border-right: 2px solid #e85c70;
+          width: 0;
+          animation: typing 3s steps(30) 1s forwards, blink .7s infinite;
+        }
+
+        }
+        @keyframes pulseHalo {
+            0% { box-shadow:0 0 20px rgba(168, 50, 68, 0.4); }
+            50% { box-shadow:0 0 20px rgba(232, 92, 112, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(168, 50, 68, 0.4); }
+        }
+        .halo{
+            animation: pulseHalo 3s infinite;
+        }
         
     </style>
 </head>
@@ -275,8 +363,8 @@
         <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
             <!--texte-->
             <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in ">
-                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade">Ayat<span class="gradient-text">Chenine</span></h1>
-                    <h2 class="text-2xl md:text-3xl font-medium text-white mb-6">Etudiante en BTS SIO SLAM </h2>
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade">Ayat<span class="gradient-text ">Chenine</span></h1>
+                    <h2 id="typed-text" class="text-2xl md:text-3xl font-medium text-white mb-6 typewriter"></h2>
                     <p class="text-lg mb-8 text-gray-300 dark:text-gray-400 max-w-md mb-8 leading-relaxed">
                         passionnée par le développement web et le design,j'ailie créativité et technique pour concevoir des sites modernes et efficaces.
                     </p>
@@ -291,7 +379,7 @@
                     </div>
                 </div>
                 <!-- image de profil-->
-                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-slide-up">
+                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-slide-up halo">
                         <img src="assets/img/ayat.jpg" 
                              alt="Ayat chenine"  
                              class=" animate-left rounded-full w-96 h-96 object-cover border-4 border-[#800020] shadow-xl shadow-black/40 hover:scale-105 transition-transform duration-500 animate-float
@@ -303,25 +391,25 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="relative py-20 bg-gradient-to-b from-[#1a0b0d]  via-[#2d0b17] to-[#800020] text-gray-100">      
+    <section id="about" class="relative py-20 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">      
       <div class="container mx-auto px-6">
             <!--titre-->
-            <h2 class="text-6xl font-extrabold mb-16 text-center tracking-wide">A <span class="gradient-text">Propos</span></h2>
+            <h2 class="text-6xl font-extrabold mb-16 text-center tracking-wide tracking-in-expand-fwd">A <span class="gradient-text">Propos</span></h2>
             
             <div class="flex flex-col md:flex-row items-center md:space-x-12">
                 <!--images-->
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative w-64 h-94 rounded-full overflow-hidden shadow-2x1 border-4 border-[#800020] animate-float">
+                    <div class="relative w-80 h-[450px] overflow-hidden shadow-2x1 border-4 border-[#800020] animate-float rounded-full">
                         <img src="assets/img/apropos.jpg" 
                              alt="A propos"
                              class="w-full h-full object-cover">
-                             <div class="absolute inset-0 rounded-full border-[#800020] blur-lg opacity-40"></div>
+                             <div class="absolute inset-0 rounded-xl border-[#800020] blur-lg opacity-40"></div>
                     </div>
                 </div>
                 
                 <div class="md:w-2/3 md:pl-6 text-center md:text-left">
                     <h3 class="text-2xl font-semibold mb-4">Qui suis-je?</h3>
-                    <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                    <p class="text-lg leading-relaxed text-gray-400 mb-6">
                         Je suis Ayat Chenine, étudiante Algérienne en <span class="text-[#a83244]">BTS SIO option SLAM </span> passionnée par le développement web et le design,j'aime allier créativité et technique pour concevoir des sites et applications modernes,a la fois esthétiques et fonctionnels alliant créativité et performance.
                     </p>
                     
