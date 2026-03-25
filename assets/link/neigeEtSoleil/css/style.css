@@ -1,0 +1,163 @@
+/* css/style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Gris très clair */
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #007bff; /* Bleu primaire */
+    margin-bottom: 20px;
+}
+
+/* Style des formulaires */
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"], select {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Boutons */
+.btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-primary { 
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success { /* Ajouter */
+    background-color: #28a745;
+    color: white;
+    border: 1px solid #28a745;
+}
+.btn-success:hover {
+    background-color: #1e7e34;
+}
+
+.btn-warning { /* Modifier */
+    background-color: #ffc107;
+    color: #212529;
+    border: 1px solid #ffc107;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger { /* Supprimer/Déconnexion */
+    background-color: #dc3545;
+    color: white;
+    border: 1px solid #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Style des tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Zone d'action des tableaux */
+.table-actions {
+    display: flex;
+    gap: 5px;
+}
+
+/* Messages */
+.message-success {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Images de Gestion */
+.gestion-header {
+    text-align: center;
+}
+.gestion-image {
+    max-width: 100%;
+    height: 150px;
+    display: block;
+    margin: 15px auto 30px auto;
+    border-radius: 8px;
+    object-fit: cover; /* Assure que l'image couvre l'espace sans déformation excessive */
+    opacity: 0.8;
+}
