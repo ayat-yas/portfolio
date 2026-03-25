@@ -1,831 +1,885 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio ACHENINE</title>
+    <meta name="description" content="Portfolio BTS SIO SLAM – Ayat Chenine, étudiante développeuse web à Paris">
+    <title>Portfolio – Ayat Chenine | BTS SIO SLAM</title>
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        primary: {
-                            light: '#800020',
-                            dark: '#a83244'
-                        },
-                        secondary: {
-                            light: '#e85c70',
-                            dark: '#8b2c3a'
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',
-                        'slide-up': 'slideUp 0.5s ease-out'
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(20px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' }
-                        }
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body:    ['"DM Sans"', 'sans-serif']
                     }
                 }
             }
         }
-    const text = "Etudiante en BTS SIO SLAM";
-     let index = 0;
-
-      function typeWriter() {
-      if (index < text.length) {
-         document.getElementById("typed-text").innerHTML += text.charAt(index);
-         index++;
-         setTimeout(typeWriter, 80); // vitesse    d’écriture (ms)
-    }
-  }
-
-  window.onload = typeWriter;
     </script>
-    <style>
-        html{
-            transition: background-color 0.5s ease, color 0.5s ease;
-            }
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .light .gradient-text {
-            background-image: linear-gradient(45deg, #800020, #e85c70);
-        }
-        .dark .gradient-text {
-            background-image: linear-gradient(90deg, #800020, #a83244, #e85c70);
-            background-size:200% 200%;
-            animation: gradientMove 6s ease infinite;
-            -webkit-background-clip: text;
-            color:transparent;
-        }
-        @keyframes gradientMove{
-            0% { background-position: 0% 50% ; }
-            50% { background-position: 100% 50% ; }
-            100% { background-position: 0% 50% ; }
-        }
-        .project-card {
-            transition: all 0.4s ease;
-            border-radius: 15px;
-            padding: 20px;
-            background: rgba(255 ,255 , 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 20px rgba(128, 0, 32,0.25);
-            border-radius: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .project-card:hover {
-            transform: translateY(-12px)scale(1.03);
-            box-shadow: 0 12px 30px rgba(168, 50, 68, 0.45);
-            border: 1px solid rgba(232, 92, 112, 0.3);
-        }
-        .theme-toggle {
-            transition: all 0.5s ease;
-        }
-        .theme-toggle:hover {
-            transform: rotate(180deg)scale(1.1);
-            color: #e85c70;
-            text-shadow: 0 0 10px #e85c70;
-        }
-        .navbar {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter:blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-         }
-        .nav-link {
-            position: relative;
-            font-weight: 600;
-            letter-spacing: 1px;
-            padding: 8px 15px;
-            transition: color 0.3s ease;
-         }
-        .nav-link:hover{
-            color: #e85c70;
-            text-shadow: 0 0 10px rgba(232, 92, 112, 0.9);
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(90deg, #800020, #e85c70);
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }    
-        .btn {
-            background: linear-gradient(90deg, #800020, #a83244);
-            color: #fff;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(128,0,32,0.4);
-        }
 
-        .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            background: linear-gradient(90deg, #a83244, #e85c70);
-            box-shadow: 0 8px 25px rgba(232,92,112,0.6);
-        }
-        body{
-            font-family: 'Roboto Mono' , monospace;
-            background: #ffffff;
-            color:#111;
-            transition: background-color 0.4s ease, color 0.4s ease;
-            position: relative;
-            overflow-x: hidden;
-        }
-        .dark body {
-            background: #121212;
-            color: #f5f5f5;
-        }
-        body::before{
-            content: "";
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(128,0,32,0.25) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 12s ease-in-out infinite alternate;
-            }
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body::after {
-            content: "";
-            position: absolute;
-            background: radial-gradient(circle, rgba(168,50,68,0.25) 0%,transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float2 18s ease-in-out infinite alternate;
-            opacity: 0.35;
-          }
-        @keyframes float {
-          0%   { transform: translate(0,0) scale(1); }
-          100% { transform: translate(120px,80px) scale(1.2); }
-        }       
-        @keyframes float2 {
-              0%   { transform: translate(0,0) scale(1); }
-              100% { transform: translate(-100px,-70px) scale(1.15); }
-        }
-
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-25px);
-            }
-        }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }  
-        .skill-icon {
-            transition: transform 0.4s ease, color 0.4s ease, text-shadow 0.4s ease ;
-        } 
-        .skill-icon:hover {
-        transform: rotate(12deg) scale(1.2);
-        color:#e85c70;
-        text-shadow: 0 0 15px rgba(232, 92, 112, 0.8);
-        }  
-        /* Apparition en fondu */
-        @keyframes fadeInUp {
-          0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-          100% {
-           opacity: 1;
-         transform: translateY(0);
-         }
-        }
-
-        /* Apparition avec zoom */
-        @keyframes zoomIn {
-        0% {
-        opacity: 0;
-        transform: scale(0.8);
-        }
-        100% {
-        opacity: 1;
-        transform: scale(1);
-        } 
-        }
-
-        /* Apparition avec slide depuis la gauche */
-        @keyframes slideInLeft {
-         0% {
-         opacity: 0;
-           transform: translateX(-50px);
-         }
-         100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-        }
-
-        /* Classes utilitaires */
-        .animate-fade {
-        opacity: 0;
-        animation: fadeInUp 1s ease forwards;
-        }
-        .animate-zoom {
-        opacity: 0;
-        animation: zoomIn 0.8s ease forwards;
-        }
-        .animate-left {
-        opacity: 0;
-         animation: slideInLeft 1s ease forwards;
-        }
-        .img-hover-zoom {
-            transition: transform 0.5s ease;
-        }
-        .img-hover-zoom:hover {
-            transform: scale(1.2);
-        }
-        .tracking-in-expand-fwd{
-            animation:tracking-in-expand-fwd 1s cubic-bezier(0.215, 0.61, 0.355, 1.000) both;
-        }
-        @keyframes tracking-in-expand-fwd{
-        0%{
-            letter-spacing:-0.5em;
-            transform:translateZ(-700px);
-            opacity:0;
-         }
-        40%{
-            opacity:0.6;
-        }
-        100%{
-            transform:translateZ(0);
-            opacity:1;
-        }
-        }
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        @keyframes blink {
-         50% { border-color: transparent }
-        }
-        .typewriter {
-         overflow: hidden;
-          white-space: nowrap;
-          border-right: 2px solid #e85c70;
-          width: 0;
-          animation: typing 3s steps(30) 1s forwards, blink .7s infinite;
-        }
-
-        }
-        @keyframes pulseHalo {
-            0% { box-shadow:0 0 20px rgba(168, 50, 68, 0.4); }
-            50% { box-shadow:0 0 20px rgba(232, 92, 112, 0.6); }
-            100% { box-shadow: 0 0 20px rgba(168, 50, 68, 0.4); }
-        }
-        .halo{
-            animation: pulseHalo 3s infinite;
-        }
-        
-    </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gradient-to-br from-[#1a0b0d] via-[#2d0b17] to-[#800020] text-gray-100 transition-colors duration-500">
-    <!-- Header/Navigation -->
-    <header class="fixed w-full z-50 bg-white/10 dark:bg-black/20 backdrop-blur-xl shadow-lg border-b border-white/10">
-        <div class="container mx-auto px-6 py-4">
-            <nav class="flex items-center justify-between">
-                <!--logo--> 
-                <a href="#" class="text-3xl font-extrabold gradient-text tracking-wide">Portfolio Ayat Chenine</a>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link">Acceuil</a>
-                    <a href="#about" class="nav-link">A propos</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#skills" class="nav-link">Compétances</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <button id="theme-toggle" class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-[#800020] to-[#e85c70] shadow-md hover:scale-110 transition-all duration-300">
-                        <i class="fas fa-moon text-gray-700 text-lg dark:hidden"></i>
-                        <i class="fas fa-sun text-white text-lg hidden dark:block"></i>
-                    </button>
-                    
-                    <button id="mobile-menu-button" class="md:hidden p-3 rounded-full bg-gradient-to-r from-[#a83244] to -[#e85c70] shadow-md hover:scale-110 transition-all duration-500">
-                        <i class="fas fa-bars text-white text-lg"></i>
-                    </button>
-                </div>
-            </nav>
-        </div>
-        
-        <!-- menu télephone -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
-            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="#home" class="nav-link">Acceuil</a>
-                <a href="#about" class="nav-link">A propos</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Compétence</a>
-                <a href="#contact" class="nav-link">Contacte</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
-            <!--texte-->
-            <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in ">
-                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight animate-fade">Ayat<span class="gradient-text ">Chenine</span></h1>
-                    <h2 id="typed-text" class="text-2xl md:text-3xl font-medium text-white mb-6 typewriter"></h2>
-                    <p class="text-lg mb-8 text-gray-300 dark:text-gray-400 max-w-md mb-8 leading-relaxed">
-                        passionnée par le développement web et le design,j'ailie créativité et technique pour concevoir des sites modernes et efficaces.
-                    </p>
-                    <!--boutons-->
-                    <div class="flex space-x-4">
-                        <a href="#projects" class="px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-[#800020] to-[#a83244] shadow-lg shadow-[#800020]/40 hover:scale-105 hover:shadow-[#a83244]/60 transition-all duration-300">
-                            Voir mes projets
-                        </a>
-                        <a href="#contact" class="px-6 py-3 rounded-lg font-semibold border border-[#a83244] text-[#a83244] bg-white/5 backdrop-blur-md hover:bg-[#a83244]/10 hover:text-white transition-all duration-300">
-                            Me contacter
-                        </a>
-                    </div>
-                </div>
-                <!-- image de profil-->
-                <div class="md:w-1/2 flex justify-center mt-12 md:mt-0 animate-slide-up halo">
-                        <img src="assets/img/ayat.jpg" 
-                             alt="Ayat chenine"  
-                             class=" animate-left rounded-full w-96 h-96 object-cover border-4 border-[#800020] shadow-xl shadow-black/40 hover:scale-105 transition-transform duration-500 animate-float
-                             ">
-                
-                </div>
-            </div>
-        </div>
-    </section>
+<body>
 
-    <!-- About Section -->
-    <section id="about" class="relative py-20 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">      
-      <div class="container mx-auto px-6">
-            <!--titre-->
-            <h2 class="text-6xl font-extrabold mb-16 text-center tracking-wide tracking-in-expand-fwd">A <span class="gradient-text">Propos</span></h2>
-            
-            <div class="flex flex-col md:flex-row items-center md:space-x-12">
-                <!--images-->
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative w-80 h-[450px] overflow-hidden shadow-2x1 border-4 border-[#800020] animate-float rounded-full">
-                        <img src="assets/img/apropos.jpg" 
-                             alt="A propos"
-                             class="w-full h-full object-cover">
-                             <div class="absolute inset-0 rounded-xl border-[#800020] blur-lg opacity-40"></div>
-                    </div>
-                </div>
-                
-                <div class="md:w-2/3 md:pl-6 text-center md:text-left">
-                    <h3 class="text-2xl font-semibold mb-4">Qui suis-je?</h3>
-                    <p class="text-lg leading-relaxed text-gray-400 mb-6">
-                        Je suis Ayat Chenine, étudiante Algérienne en <span class="text-[#a83244]">BTS SIO option SLAM </span> passionnée par le développement web et le design,j'aime allier créativité et technique pour concevoir des sites et applications modernes,a la fois esthétiques et fonctionnels alliant créativité et performance.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-6 rounded-xl shadow-lg bg-gradient-to-br from-[#1a0b0d] to-[#2d0b17] border border-[#800020]/40">
-                            <div class="flex items-center mb-4">
-                                <div class="p-3 rounded-full bg-[#800020]/30 text-[#e85c70] mr-4 shadow-inner">
-                                    <i class="fas fa-graduation-cap text-2xl"></i>
-                                </div>
-                                <h4 class="font-semibold text-xl text-white">Education</h4>
-                            </div>
-                            <p class="text-gray-300 leading-relaxed">
-                                L1 informatique<br>
-                                -Université sorbonne paris nord<br>
-                                BTS SIO option SLAM (en cours)<br>
-                                -école IRIS <br>
-                            </p>
-                        </div>
-                        
-                        <div class="p-6 rounded-xl shadow-lg bg-gradient-to-br from-[#1a0b0d] to-[#2d0b17] border border-[#a83244]/4O">
-                            <div class="flex items-center mb-4">
-                                <div class="p-3 rounded-full bg-[#a83244]/30 text-[#e85c70] mr-4 shadow-inner">
-                                    <i class="fas fa-code text-2xl"></i>
-                                </div>
-                                <h4 class="font-semibold text-xl text-white">Expériences</h4>
-                            </div>
-                            <p class="text-gray-300 leading-relaxed"> 
-                                Alternance en premiere année-poste technicien informatique <br>
-                                Chez DBC 17 <br>
-                                Seconde année en cours<br>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Barre de progression scroll -->
+<div id="scroll-progress" role="progressbar" aria-label="Progression de lecture"></div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-extrabold mb-12 text-center ">Mes <span class="gradient-text">Projets</span></h2>
-            <!--Grille-->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
-                    <div class="h-48 overflow-hidden ">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                             alt="Project 1" 
-                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            A full-featured online store with cart functionality, user authentication, and payment processing.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">React</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Node.js</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MongoDB</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                             alt="Project 2" 
-                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Task Management App</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            A productivity application for organizing tasks with drag-and-drop functionality and team collaboration.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Vue.js</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Firebase</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">TailwindCSS</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card animate-zoom bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
-                             alt="Project 3" 
-                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Weather Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
-                            Real-time weather application with 5-day forecasts, location search, and interactive maps.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">API Integration</span>
-                            <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CSS3</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="#" class="text-primary-light dark:text-primary-dark hover:underline">Live Demo</a>
-                            <a href="#" class="text-gray-500 hover:underline">Source Code</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Toast -->
+<div id="toast" role="status" aria-live="polite">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Message prêt !</span>
+</div>
+
+<!-- Retour en haut -->
+<button id="back-to-top" aria-label="Retour en haut de page"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up" style="font-size:.8rem"></i>
+</button>
+
+<!-- Modale projet -->
+<div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="fixed w-full z-50">
+    <div class="container mx-auto px-6 py-4">
+        <nav class="flex items-center justify-between" role="navigation" aria-label="Navigation principale">
+
+            <a href="#" class="font-display text-2xl font-black gradient-text tracking-wide">Ayat Chenine</a>
+
+            <!-- Nav desktop -->
+            <div class="hidden md:flex space-x-6 text-sm" style="color:#b8b0c8">
+                <a href="#home"           class="nav-link" data-section="home">Accueil</a>
+                <a href="#bts-sio"        class="nav-link" data-section="bts-sio">BTS SIO</a>
+                <a href="#about"          class="nav-link" data-section="about">À propos</a>
+                <a href="#projects"       class="nav-link" data-section="projects">Projets</a>
+                <a href="#skills"         class="nav-link" data-section="skills">Compétences</a>
+                <a href="#competences"    class="nav-link" data-section="competences">Tableau</a>
+                <a href="#veille"         class="nav-link" data-section="veille">Veille</a>
+                <a href="#certifications" class="nav-link" data-section="certifications">Certifications</a>
+                <a href="#contact"        class="nav-link" data-section="contact">Contact</a>
             </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center">
-                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+
+            <div class="flex items-center gap-3">
+                <!-- Bouton CV -->
+                <a href="assets/cv-ayat-chenine.pdf" download aria-label="Télécharger le CV"
+                   class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold"
+                   style="color:#fff;border:1px solid rgba(255,45,107,.5);transition:background .2s"
+                   onmouseover="this.style.background='rgba(192,0,60,.25)'"
+                   onmouseout="this.style.background='transparent'">
+                    <i class="fas fa-download" style="color:#FF2D6B"></i> CV
+                </a>
+                <!-- Bouton menu mobile -->
+                <button id="mobile-menu-button" aria-label="Ouvrir le menu" aria-expanded="false"
+                        aria-controls="mobile-menu"
+                        class="md:hidden w-10 h-10 rounded-full flex items-center justify-center"
+                        style="background:linear-gradient(135deg,#C0003C,#FF2D6B)">
+                    <i class="fas fa-bars text-white text-sm"></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden md:hidden" style="background:rgba(13,6,18,.9);border-top:1px solid rgba(255,255,255,.12)">
+        <div class="container mx-auto px-6 py-4 flex flex-col gap-3 text-sm" style="color:#b8b0c8">
+            <a href="#home"           class="nav-link">Accueil</a>
+            <a href="#bts-sio"        class="nav-link">BTS SIO</a>
+            <a href="#about"          class="nav-link">À propos</a>
+            <a href="#projects"       class="nav-link">Projets</a>
+            <a href="#skills"         class="nav-link">Compétences</a>
+            <a href="#competences"    class="nav-link">Tableau</a>
+            <a href="#veille"         class="nav-link">Veille</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
+            <a href="#contact"        class="nav-link">Contact</a>
+            <a href="assets/cv-ayat-chenine.pdf" download class="flex items-center gap-2" style="color:#FF2D6B">
+                <i class="fas fa-download"></i> Télécharger mon CV
+            </a>
+        </div>
+    </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Blobs décoratifs -->
+    <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full pointer-events-none blur-3xl"
+         style="background:radial-gradient(circle,rgba(192,0,60,.18),transparent)"></div>
+    <div class="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full pointer-events-none blur-3xl"
+         style="background:radial-gradient(circle,rgba(255,45,107,.1),transparent)"></div>
+
+    <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-16 relative z-10">
+
+        <!-- Texte -->
+        <div class="md:w-1/2 reveal reveal-delay-1">
+            <span class="tag mb-4 inline-block">BTS SIO · SLAM</span>
+            <h1 class="font-display font-black leading-tight mt-4 mb-4" style="font-size:clamp(2.8rem,8vw,5rem)">
+                Ayat<br><span class="gradient-text">Chenine</span>
+            </h1>
+            <h2 class="text-xl font-light mb-6" style="color:#b8b0c8">
+                <span id="typed-text" class="typewriter"></span>
+            </h2>
+            <p class="text-base leading-relaxed mb-8 max-w-md" style="color:#7a6e8a">
+                Passionnée par le développement web et le design, j'allie créativité et technique pour concevoir des sites et applications modernes, esthétiques et fonctionnels.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#projects"
+                   class="px-7 py-3 rounded-full font-semibold text-white transition-all hover:scale-105"
+                   style="background:linear-gradient(135deg,#C0003C,#FF2D6B);box-shadow:0 8px 24px rgba(192,0,60,.35)">
+                    Voir mes projets
+                </a>
+                <a href="assets/cv-ayat-chenine.pdf" download
+                   class="px-7 py-3 rounded-full font-semibold flex items-center gap-2 transition-all"
+                   style="border:1px solid rgba(192,0,60,.55);color:#FF2D6B"
+                   onmouseover="this.style.background='rgba(192,0,60,.18)'"
+                   onmouseout="this.style.background='transparent'">
+                    <i class="fas fa-download text-sm"></i> Télécharger mon CV
                 </a>
             </div>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="animate-left py-20 bg-gray-100 dark:bg-gray-800">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">My <span class="gradient-text">Skills</span></h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill 1 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
-                        <i class="fab fa-react text-3xl text-primary-light dark:text-primary-dark"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2 ">React</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full"style="width: 90%"></div>
-                    </div>
+        <!-- Photo -->
+        <div class="md:w-1/2 flex justify-center reveal reveal-delay-2">
+            <div class="relative">
+                <div class="absolute inset-0 rounded-full animate-float blur-2xl"
+                     style="background:linear-gradient(135deg,rgba(192,0,60,.45),rgba(255,45,107,.25))"></div>
+                <img src="assets/img/ayat.jpg" alt="Photo de profil d'Ayat Chenine"
+                     class="relative rounded-full object-cover animate-float"
+                     style="width:280px;height:280px;border:4px solid rgba(192,0,60,.55);box-shadow:0 20px 60px rgba(0,0,0,.5)"
+                     loading="eager">
+                <div class="glass absolute rounded-2xl flex items-center gap-2 px-4 py-2"
+                     style="bottom:-16px;right:-16px">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span>
+                    <span class="text-xs font-semibold">Disponible</span>
                 </div>
-                
-                <!-- Skill 2 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
-                        <i class="fab fa-js text-3xl text-primary-light dark:text-primary-dark"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+        <span class="text-xs tracking-widest uppercase" style="color:#7a6e8a">Scroll</span>
+        <i class="fas fa-chevron-down" style="color:#7a6e8a"></i>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BTS SIO
+══════════════════════════════════════════ -->
+<section id="bts-sio" class="py-24">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Le <span class="gradient-text">BTS SIO</span>
+        </h2>
+        <p class="text-center mb-14 reveal" style="color:#7a6e8a">Services Informatiques aux Organisations · Option SLAM</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 stagger">
+            <!-- Diplôme -->
+            <div class="glass rounded-2xl p-6 md:col-span-2">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(192,0,60,.25)">
+                        <i class="fas fa-graduation-cap" style="color:#FF2D6B"></i>
                     </div>
-                    <h3 class="font-semibold mb-2">JavaScript</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 95%"></div>
-                    </div>
+                    <h3 class="font-semibold text-lg">Le diplôme</h3>
                 </div>
-                
-                <!-- Skill 3 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
-                        <i class="fab fa-vuejs text-3xl text-primary-light dark:text-primary-dark"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Vue.js</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 85%"></div>
-                    </div>
+                <p class="text-sm leading-relaxed mb-4" style="color:#7a6e8a">
+                    Le <strong style="color:#f1f0f5">BTS SIO</strong> est un diplôme Bac+2 qui forme des techniciens capables de répondre aux besoins informatiques des entreprises. L'option <strong style="color:#FF2D6B">SLAM</strong> est orientée développement : conception, réalisation et maintenance d'applications.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag">Bac+2</span><span class="tag">Développement</span>
+                    <span class="tag">Bases de données</span><span class="tag">Gestion de projet</span>
+                    <span class="tag">Cybersécurité</span>
                 </div>
-                
-                <!-- Skill 4 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-primary-light/10 dark:bg-primary-dark/10 rounded-full">
-                        <i class="fab fa-css3-alt text-3xl text-primary-light dark:text-primary-dark"></i>
+            </div>
+            <!-- Épreuves -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(192,0,60,.25)">
+                        <i class="fas fa-file-alt" style="color:#FF2D6B"></i>
                     </div>
-                    <h3 class="font-semibold mb-2">CSS/Tailwind</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-primary-light dark:bg-primary-dark h-2.5 rounded-full" style="width: 92%"></div>
-                    </div>
+                    <h3 class="font-semibold text-lg">Épreuves</h3>
                 </div>
-                
-                <!-- Skill 5 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
-                        <i class="fab fa-node-js text-3xl text-secondary-light dark:text-secondary-dark"></i>
+                <div class="space-y-3 text-sm">
+                    <div class="flex items-start gap-2">
+                        <span class="situ-badge" style="margin-top:2px">E4</span>
+                        <p style="color:#7a6e8a">Support et mise à disposition de services informatiques</p>
                     </div>
-                    <h3 class="font-semibold mb-2">Node.js</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 80%"></div>
+                    <div class="flex items-start gap-2">
+                        <span class="situ-badge" style="margin-top:2px">E5</span>
+                        <p style="color:#7a6e8a">Production et fourniture de services informatiques</p>
                     </div>
-                </div>
-                
-                <!-- Skill 6 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
-                        <i class="fas fa-database text-3xl text-secondary-light dark:text-secondary-dark"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">MongoDB</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 75%"></div>
-                    </div>
-                </div>
-                
-                <!-- Skill 7 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
-                        <i class="fab fa-git-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Git</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 88%"></div>
-                    </div>
-                </div>
-                
-                <!-- Skill 8 -->
-                <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-secondary-light/10 dark:bg-secondary-dark/10 rounded-full">
-                        <i class="fas fa-mobile-alt text-3xl text-secondary-light dark:text-secondary-dark"></i>
-                    </div>
-                    <h3 class="font-semibold mb-2">Responsive Design</h3>
-                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div class="bg-secondary-light dark:bg-secondary-dark h-2.5 rounded-full" style="width: 95%"></div>
+                    <div class="flex items-start gap-2">
+                        <span class="situ-badge" style="margin-top:2px">E6</span>
+                        <p style="color:#7a6e8a">Parcours de professionnalisation (portfolio + oral)</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">Contact <span class="gradient-text">Moi</span></h2>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-8">
-                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-                    <p class="mb-8 text-gray-400 dark:text-gray-300">
-                        Feel free to reach out to me for project inquiries, collaborations, or just to say hello. 
-                        I'll get back to you as soon as possible.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
-                                <i class="fas fa-envelope text-primary-light dark:text-primary-dark"></i>
+        <!-- 6 axes -->
+        <h3 class="font-display text-2xl font-bold text-center mb-8 reveal">Les 6 axes de compétences officiels</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 stagger">
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-server" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Gérer le patrimoine informatique</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Recenser, inventorier et documenter les ressources matérielles et logicielles.</p>
+            </div>
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-tools" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Répondre aux incidents</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Traiter les demandes d'assistance, diagnostiquer et résoudre les incidents.</p>
+            </div>
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-globe" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Développer la présence en ligne</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Créer et maintenir des solutions web, gérer le référencement et l'identité numérique.</p>
+            </div>
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-project-diagram" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Travailler en mode projet</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Planifier, organiser et suivre un projet informatique en équipe (Agile, Gantt, Trello).</p>
+            </div>
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-code" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Mettre à disposition un service</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Développer, tester et déployer des applications répondant aux besoins métiers.</p>
+            </div>
+            <div class="glass rounded-2xl p-5 hover:bg-white/10 transition-all">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style="background:rgba(192,0,60,.2)"><i class="fas fa-user-tie" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Développement professionnel</p>
+                <p class="text-xs leading-relaxed" style="color:#7a6e8a">Veille technologique, certifications, réseau professionnel et parcours de carrière.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     À PROPOS
+══════════════════════════════════════════ -->
+<section id="about" class="py-24 section-alt">
+    <div class="container mx-auto px-6">
+        <h2 class="font-display font-black text-center mb-16 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            À <span class="gradient-text">Propos</span>
+        </h2>
+        <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div class="md:w-1/3 flex justify-center reveal">
+                <div class="relative w-72 h-96 rounded-3xl overflow-hidden shadow-2xl"
+                     style="border:2px solid rgba(192,0,60,.35)">
+                    <img src="assets/img/apropos.jpg" alt="Ayat Chenine" loading="lazy"
+                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,6,18,.55),transparent)"></div>
+                </div>
+            </div>
+            <div class="md:w-2/3 reveal">
+                <h3 class="font-display text-2xl font-bold mb-4">Qui suis-je ?</h3>
+                <p class="leading-relaxed mb-8" style="color:#7a6e8a">
+                    Je suis Ayat Chenine, étudiante algérienne en <span style="color:#FF2D6B;font-weight:500">BTS SIO option SLAM</span> à l'École IRIS (Paris). Passionnée par le développement web et le design, j'allie créativité et technique. En alternance chez <strong style="color:#f1f0f5">Itsuwa France</strong>, je développe mes compétences en conditions réelles.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(192,0,60,.25)">
+                                <i class="fas fa-graduation-cap text-xl" style="color:#FF2D6B"></i>
                             </div>
-                            <div>
-                                <h4 class="font-semibold">Email</h4>
-                                <p class="text-gray-400 dark:text-gray-300">Ayat.chenin@gmail.com</p>
-                            </div>
+                            <h4 class="font-semibold text-lg">Éducation</h4>
                         </div>
-                        
-                        <div class="flex items-start">
-                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
-                                <i class="fas fa-phone-alt text-primary-light dark:text-primary-dark"></i>
+                        <div class="space-y-3 text-sm" style="color:#7a6e8a">
+                            <div class="flex items-start gap-2">
+                                <div class="timeline-dot"></div>
+                                <div><p class="font-medium" style="color:#f1f0f5">L1 Informatique</p><p>Sorbonne Paris Nord</p></div>
                             </div>
-                            <div>
-                                <h4 class="font-semibold">Phone</h4>
-                                <p class="text-gray-400 dark:text-gray-300">0766387381</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="p-3 rounded-full bg-primary-light/10 dark:bg-primary-dark/10 mr-4">
-                                <i class="fas fa-map-marker-alt text-primary-light dark:text-primary-dark"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Location</h4>
-                                <p class="text-gray-400 dark:text-gray-300">Paris 16</p>
+                            <div class="flex items-start gap-2">
+                                <div class="timeline-dot"></div>
+                                <div><p class="font-medium" style="color:#f1f0f5">BTS SIO SLAM</p><p>École IRIS (en cours)</p></div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="font-semibold mb-4">Suivez-moi</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="p-3 rounded-full bg-gray-500 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
+                    <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(192,0,60,.25)">
+                                <i class="fas fa-briefcase text-xl" style="color:#FF2D6B"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg">Expériences</h4>
+                        </div>
+                        <div class="space-y-3 text-sm" style="color:#7a6e8a">
+                            <div class="flex items-start gap-2">
+                                <div class="timeline-dot"></div>
+                                <div><p class="font-medium" style="color:#f1f0f5">Technicien informatique – 1ère année</p><p>DBC 17</p></div>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <div class="timeline-dot"></div>
+                                <div><p class="font-medium" style="color:#f1f0f5">Alternance – 2ème année</p><p>Itsuwa France</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="md:w-1/2">
-                    <form class="bg-gray-500 dark:bg-gray-700 p-8 rounded-lg shadow-sm">
-                        <div class="mb-6">
-                            <label for="name" class="block mb-2 font-medium">Nom</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="email" class="block mb-2 font-medium">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="subject" class="block mb-2 font-medium">Sujet</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors">
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="message" class="block mb-2 font-medium">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark bg-transparent transition-colors"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg hover:opacity-90 transition-opacity">
-                            Envoie Un Message
-                        </button>
-                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROJETS
+══════════════════════════════════════════ -->
+<section id="projects" class="py-24">
+    <div class="container mx-auto px-6">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Mes <span class="gradient-text">Projets</span>
+        </h2>
+        <p class="text-center mb-16 reveal" style="color:#7a6e8a">Cliquer sur un projet pour voir la fiche complète</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+
+            <!-- Shopify -->
+            <div class="project-card glass rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openProject('shopify')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')openProject('shopify')"
+                 aria-label="Voir la fiche du projet Boutique Shopify">
+                <div class="h-52 overflow-hidden relative">
+                    <img src="assets/img/competences/logoboutiquefavaa.png" alt="Boutique Shopify"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                    <div class="absolute top-3 right-3 glass rounded-full px-3 py-1 text-xs font-semibold flex items-center gap-1">
+                        <i class="fas fa-expand-alt text-xs" style="color:#FF2D6B"></i> Fiche
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex gap-2 mb-3 flex-wrap"><span class="tag">Shopify</span><span class="tag">E-commerce</span></div>
+                    <h3 class="font-display text-xl font-bold mb-2">Boutique Shopify</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:#7a6e8a">Boutique en ligne avec système de panier, authentification et paiement.</p>
+                    <div class="flex gap-2"><span class="situ-badge">E4</span><span class="situ-badge">E5</span></div>
+                </div>
+            </div>
+
+            <!-- Neige & Soleil -->
+            <div class="project-card glass rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openProject('neige')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')openProject('neige')"
+                 aria-label="Voir la fiche du projet Neige et Soleil">
+                <div class="h-52 overflow-hidden relative">
+                    <img src="assets/img/competences/neige et soleil.png" alt="Neige et Soleil"
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                    <div class="absolute top-3 right-3 glass rounded-full px-3 py-1 text-xs font-semibold flex items-center gap-1">
+                        <i class="fas fa-expand-alt text-xs" style="color:#FF2D6B"></i> Fiche
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex gap-2 mb-3 flex-wrap"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+                    <h3 class="font-display text-xl font-bold mb-2">Neige &amp; Soleil</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:#7a6e8a">Gestion de contrats de mandat locatif et réservations saisonnières.</p>
+                    <div class="flex gap-2"><span class="situ-badge">E4</span><span class="situ-badge">E5</span></div>
+                </div>
+            </div>
+
+            <!-- Snake -->
+            <div class="project-card glass rounded-2xl overflow-hidden cursor-pointer"
+                 onclick="openProject('snake')" role="button" tabindex="0"
+                 onkeydown="if(event.key==='Enter')openProject('snake')"
+                 aria-label="Voir la fiche du projet Jeu Snake">
+                <div class="h-52 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80"
+                         alt="Jeu Snake en C" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy">
+                    <div class="absolute top-3 right-3 glass rounded-full px-3 py-1 text-xs font-semibold flex items-center gap-1">
+                        <i class="fas fa-expand-alt text-xs" style="color:#FF2D6B"></i> Fiche
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex gap-2 mb-3 flex-wrap"><span class="tag">Langage C</span><span class="tag">Algorithmique</span></div>
+                    <h3 class="font-display text-xl font-bold mb-2">Jeu Snake en C</h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color:#7a6e8a">Snake en C avec pommes multiples, vitesses variables et sauvegarde.</p>
+                    <div class="flex gap-2"><span class="situ-badge">E5</span></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 dark:bg-gray-800 py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="#" class="text-2xl font-bold gradient-text">Portfolio de Ayat Chenine</a>
-                    <p class="mt-2 text-gray-600 dark:text-gray-300">© 2023 All Rights Reserved</p>
+
+<!-- ══════════════════════════════════════════
+     COMPÉTENCES
+══════════════════════════════════════════ -->
+<section id="skills" class="py-24 section-alt">
+    <div class="container mx-auto px-6">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Mes <span class="gradient-text">Compétences</span>
+        </h2>
+        <p class="text-center mb-14 reveal" style="color:#7a6e8a">Langages · Outils · Méthodes</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14 max-w-5xl mx-auto">
+
+            <!-- Développement -->
+            <div class="reveal">
+                <h3 class="font-semibold text-sm uppercase tracking-widest mb-6" style="color:#FF2D6B">Développement</h3>
+                <div class="space-y-5" id="skills-dev">
+                    <div class="skill-item" data-pct="92"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fab fa-css3-alt" style="color:#264de4"></i> CSS</span><div class="flex items-center gap-2"><span class="badge-level badge-maitrise">Maîtrise</span><span style="color:#7a6e8a">92%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="90"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fab fa-html5" style="color:#e44d26"></i> HTML5</span><div class="flex items-center gap-2"><span class="badge-level badge-maitrise">Maîtrise</span><span style="color:#7a6e8a">90%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="75"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fab fa-js" style="color:#f7df1e"></i> JavaScript</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">75%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="70"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fab fa-php" style="color:#8892be"></i> PHP</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">70%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="65"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fas fa-database" style="color:#00758f"></i> MySQL</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">65%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="60"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fas fa-c" style="color:#a8b9cc"></i> Langage C</span><div class="flex items-center gap-2"><span class="badge-level badge-notions">Notions</span><span style="color:#7a6e8a">60%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
                 </div>
-                
-                <div class="flex space-x-6">
-                    <a href="#home" class="nav-link">Acceuil</a>
-                    <a href="#about" class="nav-link">A propos</a>
-                    <a href="#projects" class="nav-link">Projets</a>
-                    <a href="#contact" class="nav-link">Contacte</a>
+            </div>
+
+            <!-- Gestion de projets -->
+            <div class="reveal">
+                <h3 class="font-semibold text-sm uppercase tracking-widest mb-6" style="color:#FF2D6B">Gestion de projets</h3>
+                <div class="space-y-5" id="skills-mgmt">
+                    <div class="skill-item" data-pct="80"><div class="flex justify-between mb-1 text-sm"><span>Trello</span><div class="flex items-center gap-2"><span class="badge-level badge-maitrise">Maîtrise</span><span style="color:#7a6e8a">80%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="71"><div class="flex justify-between mb-1 text-sm"><span>Diagramme de Pert</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">71%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="60"><div class="flex justify-between mb-1 text-sm"><span>Méthode Agile</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">60%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="60"><div class="flex justify-between mb-1 text-sm"><span>Diagramme de Gantt</span><div class="flex items-center gap-2"><span class="badge-level badge-pratique">Pratique</span><span style="color:#7a6e8a">60%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="45"><div class="flex justify-between mb-1 text-sm"><span>Figma</span><div class="flex items-center gap-2"><span class="badge-level badge-notions">Notions</span><span style="color:#7a6e8a">45%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
+                    <div class="skill-item" data-pct="50"><div class="flex justify-between mb-1 text-sm"><span class="flex items-center gap-2"><i class="fab fa-git-alt" style="color:#f05032"></i> Git</span><div class="flex items-center gap-2"><span class="badge-level badge-notions">Notions</span><span style="color:#7a6e8a">50%</span></div></div><div class="w-full rounded-full h-2" style="background:rgba(255,255,255,.1)"><div class="skill-bar-fill h-2 rounded-full" style="background:linear-gradient(90deg,#C0003C,#FF2D6B)"></div></div></div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // Check for saved user preference or use system preference
-        const savedTheme = localStorage.getItem('theme') || 
-                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        html.classList.add(savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            const theme = html.classList.contains('dark') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        });
-        
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Smooth scrolling for all links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Add animation classes when elements come into view
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        // Set initial state for animated elements
-        document.querySelectorAll('.animate-fade-in').forEach(el => {
-            el.style.opacity = '0';
-            el.style.animation = 'fadeIn 0.5s ease-in-out forwards';
-        });
-        
-        document.querySelectorAll('.animate-slide-up').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.animation = 'slideUp 0.5s ease-out forwards';
-        });
-        
-        // Add scroll event listener
-        window.addEventListener('scroll', animateOnScroll);
-        // Trigger once on page load
-        window.addEventListener('load', animateOnScroll);
-    </script>
+
+<!-- ══════════════════════════════════════════
+     TABLEAU DE COMPÉTENCES
+══════════════════════════════════════════ -->
+<section id="competences" class="py-24">
+    <div class="container mx-auto px-6">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Tableau de <span class="gradient-text">Compétences</span>
+        </h2>
+        <p class="text-center mb-12 reveal" style="color:#7a6e8a">Référentiel BTS SIO officiel · Cliquer sur "Voir" pour les preuves</p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-2xl glass reveal">
+            <table class="min-w-[960px] w-full text-sm" aria-label="Tableau de synthèse des compétences BTS SIO">
+                <thead class="text-left text-xs uppercase tracking-wider" style="color:#FF2D6B;background:rgba(255,255,255,.05)">
+                    <tr>
+                        <th class="p-4 border-b w-44" style="border-color:rgba(255,255,255,.1)" scope="col">Projet</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Gérer le patrimoine</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Répondre aux incidents</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Présence en ligne</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Mode projet</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Mettre à dispo</th>
+                        <th class="p-4 border-b" style="border-color:rgba(255,255,255,.1)" scope="col">Dév. professionnel</th>
+                    </tr>
+                </thead>
+                <tbody style="color:#b8b0c8">
+                    <tr class="hover:bg-white/5 transition-colors border-b" style="border-color:rgba(255,255,255,.06)">
+                        <th scope="row" class="p-4 font-semibold text-left" style="color:#f1f0f5">LinkedIn</th>
+                        <td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><a href="https://www.linkedin.com/in/ayat-chn-13076b241" target="_blank" rel="noopener noreferrer" class="thumb" aria-label="Voir le profil LinkedIn">Voir</a></td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors border-b" style="border-color:rgba(255,255,255,.06)">
+                        <th scope="row" class="p-4 font-semibold text-left" style="color:#f1f0f5">Portfolio</th>
+                        <td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/portfolio/secure-1.png"]'>Voir</button></td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/portfolio/pro-1.png"]'>Voir</button></td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors border-b" style="border-color:rgba(255,255,255,.06)">
+                        <th scope="row" class="p-4 font-semibold text-left" style="color:#f1f0f5">Snake en C</th>
+                        <td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/SnakeProjetC.png"]'>Voir</button></td>
+                        <td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/trello_snake.png"]'>Voir</button></td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/snake.png"]'>Voir</button></td>
+                        <td class="p-3" style="color:#7a6e8a">—</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors border-b" style="border-color:rgba(255,255,255,.06)">
+                        <th scope="row" class="p-4 font-semibold text-left" style="color:#f1f0f5">Boutique Shopify</th>
+                        <td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/aceuill fava.png"]'>Voir</button></td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/favaa shopify.png"]'>Voir</button></td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/trello shopify.png"]'>Voir</button></td>
+                        <td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <th scope="row" class="p-4 font-semibold text-left" style="color:#f1f0f5">Neige &amp; Soleil</th>
+                        <td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/bdd.png"]'>Voir</button></td>
+                        <td class="p-3"><button class="thumb" data-images='["assets/img/competences/trello_neige.png"]'>Voir</button></td>
+                        <td class="p-3" style="color:#7a6e8a">—</td><td class="p-3" style="color:#7a6e8a">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox__overlay" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="lightbox__inner">
+            <img id="lightbox-img" class="lightbox__img" src="" alt="Preuve de compétence">
+            <button class="lightbox__btn lightbox__close" aria-label="Fermer">✕</button>
+            <button class="lightbox__btn lightbox__prev" aria-label="Précédent">‹</button>
+            <button class="lightbox__btn lightbox__next" aria-label="Suivant">›</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     VEILLE TECHNOLOGIQUE
+══════════════════════════════════════════ -->
+<section id="veille" class="py-24 section-alt">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Veille <span class="gradient-text">Technologique</span>
+        </h2>
+        <p class="text-center mb-14 reveal" style="color:#7a6e8a">Thème : Vibe Coding — Coder avec l'intelligence artificielle</p>
+
+        <!-- Pourquoi -->
+        <div class="glass rounded-2xl p-8 mb-10 reveal">
+            <h3 class="font-semibold text-lg mb-3 flex items-center gap-2" style="color:#FF2D6B">
+                <i class="fas fa-lightbulb"></i> Pourquoi ce sujet ?
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#7a6e8a">
+                Dans le cadre de ma formation BTS SIO SLAM, j'ai choisi de suivre l'évolution du <strong style="color:#f1f0f5">Vibe Coding</strong> — l'utilisation de l'IA comme assistant de programmation. Ce sujet est lié à mes pratiques et à l'évolution du métier de développeur. Il répond à la compétence <span class="situ-badge">Développement professionnel</span>.
+            </p>
+        </div>
+
+        <!-- Méthode -->
+        <h3 class="font-display text-2xl font-bold text-center mb-8 reveal">Ma méthode de veille</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-12 stagger">
+            <div class="glass rounded-2xl p-5 text-center hover:bg-white/10 transition-all">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style="background:rgba(192,0,60,.25)"><i class="fas fa-rss" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Flux RSS</p>
+                <p class="text-xs" style="color:#7a6e8a">Feedly · Dev.to · Journal du Net</p>
+            </div>
+            <div class="glass rounded-2xl p-5 text-center hover:bg-white/10 transition-all">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style="background:rgba(192,0,60,.25)"><i class="fab fa-linkedin" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Réseaux sociaux</p>
+                <p class="text-xs" style="color:#7a6e8a">LinkedIn · Twitter/X Tech</p>
+            </div>
+            <div class="glass rounded-2xl p-5 text-center hover:bg-white/10 transition-all">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style="background:rgba(192,0,60,.25)"><i class="fas fa-book" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Articles & études</p>
+                <p class="text-xs" style="color:#7a6e8a">MDPI · IEEE · Revues académiques</p>
+            </div>
+            <div class="glass rounded-2xl p-5 text-center hover:bg-white/10 transition-all">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3" style="background:rgba(192,0,60,.25)"><i class="fas fa-calendar-check" style="color:#FF2D6B"></i></div>
+                <p class="font-semibold text-sm mb-1">Fréquence</p>
+                <p class="text-xs" style="color:#7a6e8a">Hebdomadaire · Par thème</p>
+            </div>
+        </div>
+
+        <!-- Planning -->
+        <h3 class="font-display text-2xl font-bold text-center mb-8 reveal">Planning de veille</h3>
+        <div class="glass rounded-2xl p-8 mb-12 reveal">
+            <div class="space-y-4">
+                <div class="veille-step">
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color:#FF2D6B">Oct. 2024</span>
+                    <p class="font-semibold text-sm mt-1 mb-1">Choix du sujet et définition de la problématique</p>
+                    <p class="text-xs" style="color:#7a6e8a">Sélection du thème "Vibe Coding", identification des mots-clés (IA, code, Copilot, LLM), mise en place des outils.</p>
+                </div>
+                <div class="veille-step">
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color:#FF2D6B">Nov. 2024</span>
+                    <p class="font-semibold text-sm mt-1 mb-1">Collecte et tri des sources</p>
+                    <p class="text-xs" style="color:#7a6e8a">Lecture de 12+ articles, sélection de 4 sources pertinentes (académiques + spécialisées), création d'un fichier de synthèse.</p>
+                </div>
+                <div class="veille-step">
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color:#FF2D6B">Déc. 2024</span>
+                    <p class="font-semibold text-sm mt-1 mb-1">Analyse et rédaction</p>
+                    <p class="text-xs" style="color:#7a6e8a">Comparaison des outils (Copilot, Cursor, Codeium), analyse des impacts sur le métier, rédaction de la synthèse finale.</p>
+                </div>
+                <div class="veille-step">
+                    <span class="text-xs font-bold uppercase tracking-wider" style="color:#FF2D6B">Janv. 2025</span>
+                    <p class="font-semibold text-sm mt-1 mb-1">Mise à jour et intégration au portfolio</p>
+                    <p class="text-xs" style="color:#7a6e8a">Actualisation des données, nouvelles sorties (GPT-4o, Claude 3.5), intégration dans le portfolio.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Synthèse -->
+        <div class="glass rounded-3xl overflow-hidden mb-12 reveal">
+            <img src="assets/img/veille.png" alt="Illustration Veille – Vibe Coding" loading="lazy" class="w-full h-64 object-cover">
+            <div class="p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold mb-2" style="color:#FF2D6B">Qu'est-ce que le Vibe Coding ?</h4>
+                        <p class="text-sm leading-relaxed" style="color:#7a6e8a">Le <strong style="color:#f1f0f5">Vibe Coding</strong> consiste à utiliser l'IA comme assistant de programmation. Le développeur se concentre sur l'intention, tandis que l'IA génère ou complète le code.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2" style="color:#FF2D6B">Comment ça fonctionne ?</h4>
+                        <p class="text-sm leading-relaxed" style="color:#7a6e8a">Via des instructions en langage naturel, l'IA produit des composants, fonctions ou API. Le développeur garde le contrôle final.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2" style="color:#FF2D6B">Apports et limites</h4>
+                        <ul class="text-sm space-y-1 list-disc pl-4" style="color:#7a6e8a">
+                            <li>Gain de temps significatif (+40% selon GitHub)</li>
+                            <li>Aide à l'apprentissage pour les juniors</li>
+                            <li>Risque de dépendance à l'IA</li>
+                            <li>Qualité variable du code généré</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3" style="color:#FF2D6B">Outils étudiés</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag">ChatGPT</span><span class="tag">GitHub Copilot</span>
+                            <span class="tag">Cursor</span><span class="tag">Codeium</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sources -->
+        <h3 class="font-display text-2xl font-bold text-center mb-8 reveal">Sources consultées</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger">
+            <div class="glass rounded-2xl overflow-hidden project-card" style="border:1px solid rgba(255,255,255,.12)">
+                <img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?w=600&q=80" alt="Assistant IA" loading="lazy" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="source-badge"><i class="fas fa-globe" style="font-size:.7rem"></i> orsys.fr</span>
+                        <span class="text-xs" style="color:#7a6e8a">Nov. 2024</span>
+                    </div>
+                    <h4 class="font-semibold mb-2 text-sm">Quel assistant de code IA choisir ?</h4>
+                    <p class="text-xs mb-3" style="color:#7a6e8a">Comparaison des outils : Copilot, Tabnine, Codeium.</p>
+                    <a href="https://www.orsys.fr/orsys-lemag/ia-code-quel-assistant-de-code-choisir/" target="_blank" rel="noopener noreferrer" class="text-xs" style="color:#FF2D6B">Lire l'article →</a>
+                </div>
+            </div>
+            <div class="glass rounded-2xl overflow-hidden project-card" style="border:1px solid rgba(255,255,255,.12)">
+                <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?w=600&q=80" alt="Recherche" loading="lazy" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="source-badge"><i class="fas fa-flask" style="font-size:.7rem"></i> ijmcr.in</span>
+                        <span class="text-xs" style="color:#7a6e8a">Oct. 2024</span>
+                    </div>
+                    <h4 class="font-semibold mb-2 text-sm">AI-Assisted Coding : évolution ou risque ?</h4>
+                    <p class="text-xs mb-3" style="color:#7a6e8a">Étude académique sur les avantages et risques pour les développeurs.</p>
+                    <a href="https://ijmcr.in/index.php/ijmcr/article/view/1070" target="_blank" rel="noopener noreferrer" class="text-xs" style="color:#FF2D6B">Lire la recherche →</a>
+                </div>
+            </div>
+            <div class="glass rounded-2xl overflow-hidden project-card" style="border:1px solid rgba(255,255,255,.12)">
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&q=80" alt="Code IA" loading="lazy" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="source-badge"><i class="fas fa-book-open" style="font-size:.7rem"></i> mdpi.com</span>
+                        <span class="text-xs" style="color:#7a6e8a">Déc. 2024</span>
+                    </div>
+                    <h4 class="font-semibold mb-2 text-sm">IA pour la génération de code de bout en bout</h4>
+                    <p class="text-xs mb-3" style="color:#7a6e8a">Cadre pour générer, valider et intégrer du code en gardant le contrôle humain.</p>
+                    <a href="https://www.mdpi.com/2073-431X/14/3/94" target="_blank" rel="noopener noreferrer" class="text-xs" style="color:#FF2D6B">Voir l'étude →</a>
+                </div>
+            </div>
+            <div class="glass rounded-2xl overflow-hidden project-card" style="border:1px solid rgba(255,255,255,.12)">
+                <img src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?w=600&q=80" alt="GitHub" loading="lazy" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="source-badge"><i class="fab fa-wikipedia-w" style="font-size:.7rem"></i> wikipedia.org</span>
+                        <span class="text-xs" style="color:#7a6e8a">Nov. 2024</span>
+                    </div>
+                    <h4 class="font-semibold mb-2 text-sm">GitHub Copilot, agent IA pour développeurs</h4>
+                    <p class="text-xs mb-3" style="color:#7a6e8a">Extension IA : suggestions intelligentes, complétion, refactoring.</p>
+                    <a href="https://fr.wikipedia.org/wiki/GitHub_Copilot" target="_blank" rel="noopener noreferrer" class="text-xs" style="color:#FF2D6B">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════════ -->
+<section id="certifications" class="py-24">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <h2 class="font-display font-black text-center mb-4 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            <span class="gradient-text">Certifications</span> &amp; Formations
+        </h2>
+        <p class="text-center mb-14 reveal" style="color:#7a6e8a">Parcours de développement professionnel complémentaire</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 stagger">
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all project-card">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(192,0,60,.25)">
+                        <i class="fas fa-shield-alt text-2xl" style="color:#FF2D6B"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="font-semibold">Cybersécurité – ANSSI</h3>
+                            <span class="badge-level badge-maitrise">Obtenue</span>
+                        </div>
+                        <p class="text-xs mb-2" style="color:#7a6e8a">SecNumAcademie · 2024</p>
+                        <p class="text-sm" style="color:#b8b0c8">Fondamentaux de la cybersécurité, politique de sécurité et gestion des risques.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all project-card">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(192,0,60,.25)">
+                        <i class="fab fa-google text-2xl" style="color:#FF2D6B"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="font-semibold">Google Analytics</h3>
+                            <span class="badge-level badge-pratique">En cours</span>
+                        </div>
+                        <p class="text-xs mb-2" style="color:#7a6e8a">Google · 2024</p>
+                        <p class="text-sm" style="color:#b8b0c8">Analyse de données web, suivi des performances et mesure des conversions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all project-card">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(192,0,60,.25)">
+                        <i class="fab fa-git-alt text-2xl" style="color:#FF2D6B"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="font-semibold">Git &amp; GitHub</h3>
+                            <span class="badge-level badge-pratique">Obtenue</span>
+                        </div>
+                        <p class="text-xs mb-2" style="color:#7a6e8a">OpenClassrooms · 2024</p>
+                        <p class="text-sm" style="color:#b8b0c8">Versionning, branches, pull requests et collaboration en équipe.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all project-card">
+                <div class="flex items-start gap-4">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(192,0,60,.25)">
+                        <i class="fas fa-language text-2xl" style="color:#FF2D6B"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between flex-wrap gap-2 mb-1">
+                            <h3 class="font-semibold">Anglais professionnel</h3>
+                            <span class="badge-level badge-pratique">Niveau B2</span>
+                        </div>
+                        <p class="text-xs mb-2" style="color:#7a6e8a">2024</p>
+                        <p class="text-sm" style="color:#b8b0c8">Lecture de documentation technique, communication professionnelle internationale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6 mt-8 reveal">
+            <div class="flex items-center gap-3 mb-2">
+                <i class="fas fa-info-circle" style="color:#FF2D6B"></i>
+                <p class="font-semibold text-sm">Attestations disponibles sur demande</p>
+            </div>
+            <p class="text-sm" style="color:#7a6e8a">Les certificats correspondants peuvent être présentés lors de l'entretien E6.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="py-24 section-alt">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <h2 class="font-display font-black text-center mb-16 reveal" style="font-size:clamp(2rem,5vw,3.5rem)">
+            Me <span class="gradient-text">Contacter</span>
+        </h2>
+        <div class="flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/2 reveal">
+                <p class="mb-8" style="color:#7a6e8a">Contactez-moi pour toute demande d'information.</p>
+                <div class="space-y-5">
+                    <a href="mailto:Ayat.chenine@gmail.com" class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all group-hover:opacity-80" style="background:rgba(192,0,60,.25)">
+                            <i class="fas fa-envelope" style="color:#FF2D6B"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs mb-0.5" style="color:#7a6e8a">Email</p>
+                            <p class="font-medium transition-colors" style="color:#f1f0f5">Ayat.chenine@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="tel:+33766387381" class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all group-hover:opacity-80" style="background:rgba(192,0,60,.25)">
+                            <i class="fas fa-phone-alt" style="color:#FF2D6B"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs mb-0.5" style="color:#7a6e8a">Téléphone</p>
+                            <p class="font-medium" style="color:#f1f0f5">07 66 38 73 81</p>
+                        </div>
+                    </a>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(192,0,60,.25)">
+                            <i class="fas fa-map-marker-alt" style="color:#FF2D6B"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs mb-0.5" style="color:#7a6e8a">Localisation</p>
+                            <p class="font-medium" style="color:#f1f0f5">Paris 16</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <p class="text-xs uppercase tracking-widest mb-4" style="color:#7a6e8a">Suivez-moi</p>
+                    <div class="flex gap-3">
+                        <a href="#" aria-label="GitHub" class="glass w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"><i class="fab fa-github text-sm"></i></a>
+                        <a href="https://www.linkedin.com/in/ayat-chn-13076b241" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="glass w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="#" aria-label="Instagram" class="glass w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"><i class="fab fa-instagram text-sm"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 reveal">
+                <form id="contact-form" class="glass rounded-2xl p-8 space-y-5" novalidate>
+                    <div>
+                        <label for="contact-name" class="block text-xs mb-1.5" style="color:#7a6e8a">Nom <span style="color:#FF2D6B">*</span></label>
+                        <input id="contact-name" type="text" name="name" required autocomplete="name" class="form-input" placeholder="Votre nom">
+                    </div>
+                    <div>
+                        <label for="contact-email" class="block text-xs mb-1.5" style="color:#7a6e8a">Email <span style="color:#FF2D6B">*</span></label>
+                        <input id="contact-email" type="email" name="email" required autocomplete="email" class="form-input" placeholder="votre@email.com">
+                    </div>
+                    <div>
+                        <label for="contact-subject" class="block text-xs mb-1.5" style="color:#7a6e8a">Sujet</label>
+                        <input id="contact-subject" type="text" name="subject" class="form-input" placeholder="Sujet de votre message">
+                    </div>
+                    <div>
+                        <label for="contact-message" class="block text-xs mb-1.5" style="color:#7a6e8a">Message <span style="color:#FF2D6B">*</span></label>
+                        <textarea id="contact-message" name="message" rows="4" required class="form-input resize-none" placeholder="Votre message..."></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn"
+                            class="w-full px-6 py-3 rounded-full font-semibold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 hover:scale-[1.02]"
+                            style="background:linear-gradient(135deg,#C0003C,#FF2D6B);box-shadow:0 8px 24px rgba(192,0,60,.3)">
+                        <span id="submit-label">Envoyer un message</span>
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                    <p id="form-error" class="text-xs hidden" style="color:#FF2D6B">Veuillez remplir tous les champs obligatoires.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="py-10" style="background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.1)">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <a href="#" class="font-display text-xl font-black gradient-text">Ayat Chenine</a>
+        <div class="flex flex-wrap gap-6 text-sm" style="color:#7a6e8a">
+            <a href="#home"           class="nav-link">Accueil</a>
+            <a href="#bts-sio"        class="nav-link">BTS SIO</a>
+            <a href="#projects"       class="nav-link">Projets</a>
+            <a href="#skills"         class="nav-link">Compétences</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
+            <a href="#contact"        class="nav-link">Contact</a>
+        </div>
+        <p class="text-xs" style="color:#7a6e8a">© <span id="footer-year"></span> Ayat Chenine · BTS SIO SLAM</p>
+    </div>
+</footer>
+
+<!-- Script principal -->
+<script src="main.js"></script>
+
 </body>
 </html>
